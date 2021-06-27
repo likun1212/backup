@@ -1,0 +1,19 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+fig = plt.figure()
+
+
+def f():
+    return np.random.randint(10,size=(10,10))
+
+
+im = plt.imshow(f(), animated=True)
+
+
+def updatefig(*args):
+    im.set_array(f())
+    return im,
+
+ani = animation.FuncAnimation(fig, updatefig,frames=3000,interval=50, blit=True)
